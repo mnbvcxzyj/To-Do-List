@@ -125,10 +125,6 @@ export const LoadingDiv = styled.div`
   margin-top: 15px;
 `;
 
-export const LoadingImg = styled.img`
-  width: 30px;
-`;
-
 export const EachPostLi = styled.li`
   margin: 14px;
   display: flex;
@@ -227,6 +223,7 @@ export const ReplSubmitDiv = styled.div`
 `;
 export const CursorDiv = styled.div`
   cursor: pointer;
+  margin-right: 17px;
 `;
 
 export const PostWriteDiv = styled.div`
