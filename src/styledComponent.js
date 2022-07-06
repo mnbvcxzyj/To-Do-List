@@ -1,12 +1,12 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const MediaDiv = styled.div`
   margin: 0px auto;
   min-height: 100vh;
-  width: 768px;
+  width: 766px;
   color: ${(props) => props.theme.fontColor};
   background-color: ${(props) => props.theme.bgColor};
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 766px) {
     width: 100%;
   }
 `;
@@ -33,7 +33,7 @@ export const TitleLogoDiv = styled.div`
 `;
 
 export const TitleBig = styled.span`
-  font-size: 35px;
+  font-size: 30px;
 `;
 
 export const TitleSmall = styled.span`
@@ -62,7 +62,7 @@ export const SlogunSection = styled.div`
 `;
 
 export const SlogunBig = styled.span`
-  font-size: 40px;
+  font-size: 35px;
   font-family: "League Gothic", sans-serif;
 `;
 
@@ -71,35 +71,52 @@ export const SlogunSmall = styled.span`
   font-weight: bold;
   color: #5399f5;
 `;
-export const PostSection = styled.div`
+export const ListSection = styled.div`
   margin: 0px auto;
-  margin-top: 20px;
-  width: 90%;
+  margin-top: 10px;
+  width: 80%;
   display: flex;
   flex-direction: column;
 `;
-export const PostTitleDiv = styled.div`
-  border-top-left-radius: 30px;
-  border-top-right-radius: 30px;
+export const ListTitleDiv = styled.div`
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
   color: white;
-  background-color: #f39926;
+  background-color: #5386f5;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
 `;
-export const PostTitle = styled.span`
-  margin-top: 10px;
-  margin-bottom: 5px;
-  font-family: "Black Han Sans", sans-serif;
-  font-size: 25px;
-`;
 
-export const PostListDiv = styled.div`
+export const ListDiv = styled.div`
   font-size: 16px;
   font-family: "Noto Sans KR", sans-serif;
+  margin: 0px auto;
+  margin-top: 10px;
+  width: 90%;
+`;
+export const CheckTitleDiv = styled.div`
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
 `;
 
+export const CheckDiv = styled.div`
+  font-size: 17px;
+  font-family: "Noto Sans KR", sans-serif;
+  width: 70%;
+  margin: 0px auto;
+`;
+
+export const TextDiv = styled.div`
+  font-size: 17px;
+  font-family: "Noto Sans KR", sans-serif;
+  margin: 10px auto;
+`;
 export const LoadingDiv = styled.div`
   display: flex;
   justify-content: center;
@@ -152,11 +169,11 @@ export const Footerdiv = styled.div`
 `;
 export const FooterBig = styled.span`
   margin: 5px;
-  font-size: 12px;
+  font-size: 13px;
 `;
 export const FooterSmall = styled.span`
   margin: 5px;
-  font-size: 5px;
+  font-size: 8px;
 `;
 
 export const PostReadDiv = styled.div`
@@ -247,4 +264,48 @@ export const PostSubmit = styled.div`
   font-family: "Black Han Sans", sans-serif;
   font-size: 20px;
   color: white;
+`;
+
+export const TodoList = styled.div`
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-size: 20px;
+  color: white;
+`;
+
+export const CircleButton = styled.button`
+  background-color: #38d9a9;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  align-items: center;
+`;
+
+export const InsertFormPositioner = styled.div`
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+`;
+
+export const InsertForm = styled.form`
+  background: #f8f9fa;
+  padding-left: 32px;
+  padding-top: 32px;
+  padding-right: 32px;
+  padding-bottom: 72px;
+
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+  border-top: 1px solid #e9ecef;
+`;
+
+export const Input = styled.input`
+  padding: 12px;
+  border-radius: 4px;
+  border: 1px solid #dee2e6;
+  width: 100%;
+  outline: none;
+  font-size: 18px;
+  box-sizing: border-box;
 `;
