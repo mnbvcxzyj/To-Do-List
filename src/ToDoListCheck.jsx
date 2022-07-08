@@ -12,16 +12,28 @@ import {
   faThumbsDown,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import React, { useEffect } from "react";
 import ToDoInput from "./ToDoInput";
 
-function ToDoListCheck({ todo, onRemove }) {
+function ToDoListCheck({
+  todo,
+  onRemove,
+  onToggle,
+  onInputToggle,
+  selectedTodo,
+  setValue,
+}) {
   const { id, text, check } = todo;
+  useEffect(() => {
+    if (selectedTodo) {
+      setValue(selectedTodo.text);
+    }
+  }, [selectedTodo]);
 
   return (
     <>
       <CheckDiv>
-        <CheckTitleDiv>
+        <CheckTitleDiv onClick={() => onToggle(check)}>
           {" "}
           {check ? (
             <FontAwesomeIcon icon={faThumbsUp} />
@@ -29,7 +41,7 @@ function ToDoListCheck({ todo, onRemove }) {
             <FontAwesomeIcon icon={faThumbsDown} />
           )}
           <TextDiv>{text}</TextDiv>
-          <CursorDiv onClick={ToDoInput}>
+          <CursorDiv onClick={() => onInputToggle()}>
             <FontAwesomeIcon icon={faPen} />
           </CursorDiv>
           <CursorDiv onClick={() => onRemove(id)}>
