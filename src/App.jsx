@@ -16,6 +16,9 @@ import ToDoInput from "./ToDoInput";
 
 function App() {
   const [darkMode, setDarkMode] = useState(true);
+  const [inputToggle, setInputToggle] = useState(false);
+  const [selectedTodo, setSelectedTodo] = useState(null);
+
   const [todos, setTodos] = useState([
     {
       id: 1,
@@ -33,6 +36,7 @@ function App() {
       check: false,
     },
   ]);
+
   const plusToDo = useRef(4);
   const onInput = useCallback(
     (text) => {
@@ -63,6 +67,22 @@ function App() {
     [todos]
   );
 
+  const onUpdate = (id, text) => {
+    onInputToggle();
+
+    setTodos(todos.map((todo) => (todo.id === id ? { ...todo, text } : todo)));
+  };
+
+  const onInputToggle = () => {
+    if (selectedTodo) {
+      setSelectedTodo(null);
+    }
+    setInputToggle((prev) => !prev);
+  };
+
+  const onChangeSelectedTodo = (todo) => {
+    setSelectedTodo(todo);
+  };
   const navigate = useNavigate();
   return (
     <>
@@ -72,18 +92,19 @@ function App() {
           <Header darkMode={darkMode} setDarkMode={setDarkMode}></Header>
           <Main>
             <Slogun />
-            <ToDoInput />
-            <Routes>
-              <Route
-                exact
-                path="/"
-                element={
-                  <ToDoList todos={todos}>
-                    <ToDoListCheck />
-                  </ToDoList>
-                }
+            <ToDoInput onInput={onInput} />
+            <ToDoList todos={todos}>
+              <ToDoListCheck
+                onToggle={onToggle}
+                onChangeSelectedTodo={onChangeSelectedTodo}
               />
-            </Routes>
+            </ToDoList>
+            {inputToggle && (
+              <ToDoEdit
+                onChangeSelectedTodo={onChangeSelectedTodo}
+                onUpdate={onUpdate}
+              />
+            )}
           </Main>
           <Footer></Footer>
         </MediaDiv>
