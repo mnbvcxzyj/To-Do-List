@@ -15,13 +15,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import ToDoInput from "./ToDoInput";
 
-function ToDoListCheck({ todo, onRemove, onToggle }) {
+function ToDoListCheck({ todo, onRemove }) {
   const { id, text, check } = todo;
 
   return (
     <>
       <CheckDiv>
-        <CheckTitleDiv onClick={() => onToggle(check)}>
+        <CheckTitleDiv>
           {" "}
           {check ? (
             <FontAwesomeIcon icon={faThumbsUp} />
