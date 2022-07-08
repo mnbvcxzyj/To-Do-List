@@ -1,30 +1,22 @@
 import React from "react";
-import { useState, useCallback, useEffect } from "react";
-
+import { useState, useCallback, useRef } from "react";
 function ToDoEdit({ selectedTodo, onUpdate }) {
   const [value, setValue] = useState("");
-
   const onChange = useCallback((e) => {
     setValue(e.target.value);
   }, []);
-
   const onSubmit = useCallback(
     (e) => {
-      onUpdate(selectedTodo.id, value);
-      setValue(""); //value 초기화
+      setValue("");
       e.preventDefault();
     },
-    [onUpdate, value]
+    [value]
   );
-  useEffect(() => {
-    if (selectedTodo) {
-      setValue(selectedTodo.text);
-    }
-  }, [selectedTodo]);
+
   return (
     <div className="background">
-      <form onSubmit={onSubmit}>
-        수정
+      <form onSubmit={onSubmit} className="todoedit__insert">
+        <h2>수정하기</h2>
         <input
           onChange={onChange}
           value={value}

@@ -22,10 +22,8 @@ function ToDoListCheck({
   onInputToggle,
   selectedTodo,
   setValue,
-  onChangeSelectedTodo,
 }) {
   const { id, text, check } = todo;
-
   useEffect(() => {
     if (selectedTodo) {
       setValue(selectedTodo.text);
@@ -43,12 +41,7 @@ function ToDoListCheck({
             <FontAwesomeIcon icon={faThumbsDown} />
           )}
           <TextDiv>{text}</TextDiv>
-          <CursorDiv
-            onClick={() => {
-              onChangeSelectedTodo(todo);
-              onInputToggle();
-            }}
-          >
+          <CursorDiv onClick={() => onInputToggle()}>
             <FontAwesomeIcon icon={faPen} />
           </CursorDiv>
           <CursorDiv onClick={() => onRemove(id)}>

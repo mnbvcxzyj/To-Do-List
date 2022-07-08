@@ -1,14 +1,11 @@
 import React from "react";
 import { InputForm, ListSection } from "./styledComponent";
 import { useState, useCallback } from "react";
-
 function ToDoInput({ onInput }) {
   const [value, setValue] = useState("");
-
   const onChange = useCallback((e) => {
     setValue(e.target.value);
   }, []);
-
   const onSubmit = useCallback(
     (e) => {
       onInput(value);
@@ -18,17 +15,18 @@ function ToDoInput({ onInput }) {
     },
     [onInput, value]
   );
-
   return (
     <form className="ToDoInputForm" onSubmit={onSubmit}>
       <ListSection>
-        <input
-          id="input"
-          onChange={onChange}
-          value={value}
-          placeholder="할 일을 입력해보세요!"
-        />
-        <button type="plus">+</button>
+        <InputForm>
+          <input
+            id="input"
+            onChange={onChange}
+            value={value}
+            placeholder="할 일을 입력해보세요!"
+          />
+          <button type="plus">+</button>
+        </InputForm>
       </ListSection>
     </form>
   );
