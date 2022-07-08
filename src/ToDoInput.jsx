@@ -1,5 +1,5 @@
 import React from "react";
-import { ListSection } from "./styledComponent";
+import { InputForm, ListSection } from "./styledComponent";
 import { useState, useCallback } from "react";
 
 function ToDoInput({ onInput }) {
@@ -20,7 +20,7 @@ function ToDoInput({ onInput }) {
   );
 
   return (
-    <form onSubmit={onSubmit}>
+    <form className="ToDoInputForm" onSubmit={onSubmit}>
       <ListSection>
         <input
           id="input"
