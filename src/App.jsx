@@ -1,7 +1,7 @@
 import { MediaDiv, Main, TodoList } from "./styledComponent";
 import { ThemeProvider } from "styled-components";
 import { darkTheme, GlobalStyles, lightTheme } from "./style";
-import { useState } from "react";
+import { useState, useCallback, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowsRotate, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { Route, Routes, useNavigate } from "react-router-dom";
@@ -19,7 +19,7 @@ function App() {
   const [todos, setTodos] = useState([
     {
       id: 1,
-      text: "곱창 먹기",
+      text: "헬스장 가기",
       check: true,
     },
     {
@@ -33,6 +33,20 @@ function App() {
       check: false,
     },
   ]);
+  const plusToDo = useRef(4);
+  const onInput = useCallback(
+    (text) => {
+      const todo = {
+        id: plusToDo.current,
+        text,
+        check: false,
+      };
+      setTodos(todos.concat(todo));
+      plusToDo.current++;
+    },
+    [todos]
+  );
+
   const navigate = useNavigate();
   return (
     <>
@@ -42,6 +56,7 @@ function App() {
           <Header darkMode={darkMode} setDarkMode={setDarkMode}></Header>
           <Main>
             <Slogun />
+            <ToDoInput />
             <Routes>
               <Route
                 exact
@@ -53,8 +68,6 @@ function App() {
                 }
               />
             </Routes>
-            <ToDoInput />
-            <ToDoEdit />
           </Main>
           <Footer></Footer>
         </MediaDiv>
