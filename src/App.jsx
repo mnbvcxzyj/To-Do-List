@@ -54,8 +54,8 @@ function App() {
           <Main>
             <Slogun />
             <ToDoInput onInput={onInput} />
-            <ToDoList todos={todos}>
-              <ToDoListCheck onRemove={onRemove} />
+            <ToDoList todos={todos} onRemove={onRemove}>
+              <ToDoListCheck todo={todos} onRemove={onRemove} />
             </ToDoList>
           </Main>
           <Footer></Footer>
