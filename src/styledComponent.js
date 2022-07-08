@@ -110,8 +110,6 @@ export const CheckTitleDiv = styled.div`
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
   align-items: center;
 `;
 
@@ -233,7 +231,6 @@ export const ReplSubmitDiv = styled.div`
 `;
 export const CursorDiv = styled.div`
   cursor: pointer;
-  margin-right: 17px;
 `;
 
 export const PostWriteDiv = styled.div`
