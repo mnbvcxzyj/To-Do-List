@@ -79,10 +79,11 @@ function App() {
     }
     setInputToggle((prev) => !prev);
   };
+
   const onChangeSelectedTodo = (todo) => {
     setSelectedTodo(todo);
   };
-  const navigate = useNavigate();
+
   return (
     <>
       <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
@@ -91,19 +92,22 @@ function App() {
           <Header darkMode={darkMode} setDarkMode={setDarkMode}></Header>
           <Main>
             <Slogun />
-            <ToDoInput />
-            <Routes>
-              <Route
-                exact
-                path="/"
-                element={
-                  <ToDoList todos={todos}>
-                    <ToDoListCheck />
-                  </ToDoList>
-                }
+            <ToDoInput onInput={onInput} />
+            <ToDoList todos={todos}>
+              <ToDoListCheck
+                onToggle={onToggle}
+                onRemove={onRemove}
+                onChangeSelectedTodo={onChangeSelectedTodo}
+                onInputToggle={onInputToggle}
               />
-            </Routes>
-            {inputToggle && <ToDoEdit />}
+            </ToDoList>
+            {inputToggle && (
+              <ToDoEdit
+                onChangeSelectedTodo={onChangeSelectedTodo}
+                onUpdate={onUpdate}
+                onInputToggle={onInputToggle}
+              />
+            )}
           </Main>
           <Footer></Footer>
         </MediaDiv>
