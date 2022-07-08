@@ -1,4 +1,4 @@
-import { MediaDiv, Main, TodoList } from "./styledComponent";
+import { MediaDiv, Main } from "./styledComponent";
 import { ThemeProvider } from "styled-components";
 import { darkTheme, GlobalStyles, lightTheme } from "./style";
 import { useState, useCallback, useRef } from "react";
@@ -21,13 +21,10 @@ function App() {
       id: 2,
       text: "일찍 일어나기",
     },
-    {
-      id: 3,
-      text: "빨래하기",
-    },
+    { id: 3, text: "멋쟁이 사자처럼" },
   ]);
 
-  const plusToDo = useRef(4);
+  const plusToDo = useRef(3);
   const onInput = useCallback(
     (text) => {
       const todo = {
