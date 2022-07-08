@@ -2,28 +2,38 @@ import { MediaDiv, Main, TodoList } from "./styledComponent";
 import { ThemeProvider } from "styled-components";
 import { darkTheme, GlobalStyles, lightTheme } from "./style";
 import { useState, useCallback, useRef } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowsRotate, faPlus } from "@fortawesome/free-solid-svg-icons";
+import { Route, Routes, useNavigate } from "react-router-dom";
+import { ListSection, ListTitleDiv, CursorDiv } from "./styledComponent";
 import Header from "./Header";
 import Slogun from "./Slogun";
 import Footer from "./Footer";
 import ToDoList from "./ToDoList";
 import ToDoListCheck from "./ToDoListCheck";
+import ToDoEdit from "./ToDoEdit";
 import ToDoInput from "./ToDoInput";
 
 function App() {
   const [darkMode, setDarkMode] = useState(true);
+  const [inputToggle, setInputToggle] = useState(false);
+  const [selectedTodo, setSelectedTodo] = useState(null);
 
   const [todos, setTodos] = useState([
     {
       id: 1,
       text: "헬스장 가기",
+      check: true,
     },
     {
       id: 2,
       text: "일찍 일어나기",
+      check: true,
     },
     {
       id: 3,
       text: "빨래하기",
+      check: false,
     },
   ]);
 
@@ -33,6 +43,7 @@ function App() {
       const todo = {
         id: plusToDo.current,
         text,
+        check: false,
       };
       setTodos(todos.concat(todo));
       plusToDo.current++;
@@ -45,6 +56,34 @@ function App() {
     [todos]
   );
 
+  const onToggle = useCallback(
+    (id) => {
+      setTodos(
+        todos.map((todo) =>
+          todo.id === id ? { ...todo, check: !todo.check } : todo
+        )
+      );
+    },
+    [todos]
+  );
+
+  const onUpdate = (id, text) => {
+    onInputToggle();
+
+    setTodos(todos.map((todo) => (todo.id === id ? { ...todo, text } : todo)));
+  };
+
+  const onInputToggle = () => {
+    if (selectedTodo) {
+      setSelectedTodo(null);
+    }
+    setInputToggle((prev) => !prev);
+  };
+
+  const onChangeSelectedTodo = (todo) => {
+    setSelectedTodo(todo);
+  };
+  const navigate = useNavigate();
   return (
     <>
       <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
@@ -55,8 +94,17 @@ function App() {
             <Slogun />
             <ToDoInput onInput={onInput} />
             <ToDoList todos={todos}>
-              <ToDoListCheck onRemove={onRemove} />
+              <ToDoListCheck
+                onToggle={onToggle}
+                onChangeSelectedTodo={onChangeSelectedTodo}
+              />
             </ToDoList>
+            {inputToggle && (
+              <ToDoEdit
+                onChangeSelectedTodo={onChangeSelectedTodo}
+                onUpdate={onUpdate}
+              />
+            )}
           </Main>
           <Footer></Footer>
         </MediaDiv>
