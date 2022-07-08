@@ -52,6 +52,17 @@ function App() {
     [todos]
   );
 
+  const onToggle = useCallback(
+    (id) => {
+      setTodos(
+        todos.map((todo) =>
+          todo.id === id ? { ...todo, check: !todo.check } : todo
+        )
+      );
+    },
+    [todos]
+  );
+
   const navigate = useNavigate();
   return (
     <>
