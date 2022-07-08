@@ -1,9 +1,9 @@
 import { TextDiv, CheckDiv, CursorDiv, CheckTitleDiv } from "./styledComponent";
-import { faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 
-function ToDoListCheck({ todo, onRemove, onToggle }) {
+function ToDoListCheck({ todo, onRemove }) {
   const { id, text } = todo;
 
   return (
