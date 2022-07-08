@@ -83,7 +83,7 @@ function App() {
   const onChangeSelectedTodo = (todo) => {
     setSelectedTodo(todo);
   };
-  const navigate = useNavigate();
+
   return (
     <>
       <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
@@ -96,13 +96,16 @@ function App() {
             <ToDoList todos={todos}>
               <ToDoListCheck
                 onToggle={onToggle}
+                onRemove={onRemove}
                 onChangeSelectedTodo={onChangeSelectedTodo}
+                onInputToggle={onInputToggle}
               />
             </ToDoList>
             {inputToggle && (
               <ToDoEdit
                 onChangeSelectedTodo={onChangeSelectedTodo}
                 onUpdate={onUpdate}
+                onInputToggle={onInputToggle}
               />
             )}
           </Main>

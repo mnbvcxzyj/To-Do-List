@@ -1,14 +1,7 @@
-import React, { useState, useCallback, useEffect } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
-import {
-  ListSection,
-  ListTitleDiv,
-  CursorDiv,
-  ListDiv,
-} from "./styledComponent";
+import React from "react";
+import { ListSection, ListDiv } from "./styledComponent";
 import ToDoListCheck from "./ToDoListCheck";
-import ToDoInput from "./ToDoInput";
+
 const ToDoList = ({ todos, onRemove }) => {
   return (
     <>

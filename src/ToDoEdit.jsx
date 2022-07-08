@@ -1,7 +1,12 @@
 import React from "react";
 import { useState, useCallback, useEffect } from "react";
 
-function ToDoEdit({ selectedTodo, onUpdate }) {
+function ToDoEdit({
+  selectedTodo,
+  onUpdate,
+  onInputToggle,
+  onChangeSelectedToggle,
+}) {
   const [value, setValue] = useState("");
 
   const onChange = useCallback((e) => {
@@ -16,6 +21,7 @@ function ToDoEdit({ selectedTodo, onUpdate }) {
     },
     [onUpdate, value]
   );
+
   useEffect(() => {
     if (selectedTodo) {
       setValue(selectedTodo.text);
@@ -28,9 +34,9 @@ function ToDoEdit({ selectedTodo, onUpdate }) {
         <input
           onChange={onChange}
           value={value}
-          placeholder="할 일을 입력하세요"
+          placeholder="할 일을 수정해보세요!"
         />
-        <button type="submit">수정하기</button>
+        <button type="plus">Edit</button>
       </form>
     </div>
   );
