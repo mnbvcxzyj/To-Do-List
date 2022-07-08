@@ -11,12 +11,10 @@ import Slogun from "./Slogun";
 import Footer from "./Footer";
 import ToDoList from "./ToDoList";
 import ToDoListCheck from "./ToDoListCheck";
-import ToDoEdit from "./ToDoEdit";
 import ToDoInput from "./ToDoInput";
 
 function App() {
   const [darkMode, setDarkMode] = useState(true);
-  const [inputToggle, setInputToggle] = useState(false);
   const [selectedTodo, setSelectedTodo] = useState(null);
 
   const [todos, setTodos] = useState([
@@ -56,30 +54,6 @@ function App() {
     [todos]
   );
 
-  const onToggle = useCallback(
-    (id) => {
-      setTodos(
-        todos.map((todo) =>
-          todo.id === id ? { ...todo, check: !todo.check } : todo
-        )
-      );
-    },
-    [todos]
-  );
-
-  const onUpdate = (id, text) => {
-    onInputToggle();
-
-    setTodos(todos.map((todo) => (todo.id === id ? { ...todo, text } : todo)));
-  };
-
-  const onInputToggle = () => {
-    if (selectedTodo) {
-      setSelectedTodo(null);
-    }
-    setInputToggle((prev) => !prev);
-  };
-
   const onChangeSelectedTodo = (todo) => {
     setSelectedTodo(todo);
   };
@@ -95,19 +69,10 @@ function App() {
             <ToDoInput onInput={onInput} />
             <ToDoList todos={todos}>
               <ToDoListCheck
-                onToggle={onToggle}
                 onRemove={onRemove}
                 onChangeSelectedTodo={onChangeSelectedTodo}
-                onInputToggle={onInputToggle}
               />
             </ToDoList>
-            {inputToggle && (
-              <ToDoEdit
-                onChangeSelectedTodo={onChangeSelectedTodo}
-                onUpdate={onUpdate}
-                onInputToggle={onInputToggle}
-              />
-            )}
           </Main>
           <Footer></Footer>
         </MediaDiv>

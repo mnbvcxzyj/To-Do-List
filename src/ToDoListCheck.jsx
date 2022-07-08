@@ -1,47 +1,20 @@
 import { TextDiv, CheckDiv, CursorDiv, CheckTitleDiv } from "./styledComponent";
-import {
-  faPen,
-  faTrash,
-  faThumbsUp,
-  faThumbsDown,
-} from "@fortawesome/free-solid-svg-icons";
+import { faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useEffect } from "react";
+import React from "react";
 
-function ToDoListCheck({
-  todo,
-  onRemove,
-  onToggle,
-  onInputToggle,
-  selectedTodo,
-  setValue,
-  onChangeSelectedTodo,
-}) {
-  const { id, text, check } = todo;
-  useEffect(() => {
-    if (selectedTodo) {
-      setValue(selectedTodo.text);
-    }
-  }, [selectedTodo]);
+function ToDoListCheck({ todo, onRemove, onToggle }) {
+  const { id, text } = todo;
+
   return (
     <>
-      <CheckDiv>
-        <CheckTitleDiv onClick={() => onToggle(id)}>
-          <input type={"checkbox"} />
-          <TextDiv>{text}</TextDiv>
-          <CursorDiv
-            onClick={() => {
-              onChangeSelectedTodo(todo);
-              onInputToggle();
-            }}
-          >
-            <FontAwesomeIcon icon={faPen} />
-          </CursorDiv>
-          <CursorDiv onClick={() => onRemove(id)}>
-            <FontAwesomeIcon icon={faTrash} />
-          </CursorDiv>
-        </CheckTitleDiv>
-      </CheckDiv>
+      <CheckTitleDiv>
+        <input type={"checkbox"} />
+        <TextDiv>{text}</TextDiv>
+        <CursorDiv onClick={() => onRemove(id)}>
+          <FontAwesomeIcon icon={faTrash} />
+        </CursorDiv>
+      </CheckTitleDiv>
     </>
   );
 }
