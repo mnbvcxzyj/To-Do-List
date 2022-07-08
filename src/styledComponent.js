@@ -246,51 +246,10 @@ export const TitleInput = styled.input`
   padding: 10px;
   border-radius: 5px;
 `;
-export const ContentsInput = styled.textarea`
-  margin-top: 10px;
-  padding: 10px;
-  height: 400px;
-  border-radius: 5px;
-  font-family: "Noto Sans KR", sans-serif;
-`;
-export const PostSubmitDiv = styled.div`
-  width: 50%;
-  margin: 0px auto;
-  margin-top: 15px;
-  border-radius: 10px;
-  background-color: #f39926;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  cursor: pointer;
-`;
-export const PostSubmit = styled.div`
-  margin-top: 10px;
-  margin-bottom: 5px;
-  font-family: "Black Han Sans", sans-serif;
-  font-size: 20px;
-  color: white;
-`;
 
 export const TodoList = styled.div`
   margin-top: 10px;
   margin-bottom: 5px;
   font-size: 20px;
   color: white;
-`;
-
-export const CircleButton = styled.button`
-  background-color: #38d9a9;
-  cursor: pointer;
-  width: 20px;
-  height: 20px;
-  align-items: center;
-`;
-
-export const InsertFormPositioner = styled.div`
-  width: 100%;
-  bottom: 0;
-  left: 0;
-  position: absolute;
 `;
