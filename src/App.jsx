@@ -21,13 +21,10 @@ function App() {
       id: 2,
       text: "일찍 일어나기",
     },
-    {
-      id: 3,
-      text: "빨래하기",
-    },
+    { id: 3, text: "멋쟁이 사자처럼" },
   ]);
 
-  const plusToDo = useRef(4);
+  const plusToDo = useRef(3);
   const onInput = useCallback(
     (text) => {
       const todo = {
