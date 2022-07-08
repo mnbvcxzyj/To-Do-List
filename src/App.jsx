@@ -1,4 +1,4 @@
-import { MediaDiv, Main, TodoList } from "./styledComponent";
+import { MediaDiv, Main } from "./styledComponent";
 import { ThemeProvider } from "styled-components";
 import { darkTheme, GlobalStyles, lightTheme } from "./style";
 import { useState, useCallback, useRef } from "react";
