@@ -1,4 +1,6 @@
 import styled, { css } from "styled-components";
+import ToDoInput from "./ToDoInput";
+import { Input } from "./styledComponent";
 
 export const MediaDiv = styled.div`
   margin: 0px auto;

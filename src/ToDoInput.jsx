@@ -20,7 +20,6 @@ function ToDoInput({ onInput }) {
       <ListSection>
         <InputForm>
           <input
-            id="input"
             onChange={onChange}
             value={value}
             placeholder="할 일을 입력해보세요!"
