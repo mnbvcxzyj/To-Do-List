@@ -7,19 +7,17 @@ import {
 } from "./styledComponent";
 import {
   faPen,
-  faSquareCheck,
-  faSquare,
   faTrash,
-  faFaceSmile,
-  faFaceAngry,
   faThumbsUp,
   faThumbsDown,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
+import ToDoInput from "./ToDoInput";
 
-function ToDoListCheck({ todo }) {
+function ToDoListCheck({ todo, onRemove }) {
   const { id, text, check } = todo;
+
   return (
     <>
       <CheckDiv>
@@ -31,10 +29,10 @@ function ToDoListCheck({ todo }) {
             <FontAwesomeIcon icon={faThumbsDown} />
           )}
           <TextDiv>{text}</TextDiv>
-          <CursorDiv>
+          <CursorDiv onClick={ToDoInput}>
             <FontAwesomeIcon icon={faPen} />
           </CursorDiv>
-          <CursorDiv>
+          <CursorDiv onClick={() => onRemove(id)}>
             <FontAwesomeIcon icon={faTrash} />
           </CursorDiv>
         </CheckTitleDiv>
