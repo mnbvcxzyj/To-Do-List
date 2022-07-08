@@ -9,7 +9,7 @@ import {
 } from "./styledComponent";
 import ToDoListCheck from "./ToDoListCheck";
 import ToDoInput from "./ToDoInput";
-const ToDoList = ({ todos }) => {
+const ToDoList = ({ todos, onRemove }) => {
   return (
     <>
       <ListSection>
