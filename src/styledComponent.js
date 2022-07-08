@@ -1,4 +1,6 @@
 import styled, { css } from "styled-components";
+import ToDoInput from "./ToDoInput";
+import { Input } from "./styledComponent";
 
 export const MediaDiv = styled.div`
   margin: 0px auto;
@@ -78,6 +80,16 @@ export const ListSection = styled.div`
   display: flex;
   flex-direction: column;
 `;
+export const InputForm = styled.form`
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  color: white;
+  background-color: #5386f5;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+`;
+
 export const ListTitleDiv = styled.div`
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
@@ -283,26 +295,4 @@ export const InsertFormPositioner = styled.div`
   bottom: 0;
   left: 0;
   position: absolute;
-`;
-
-export const InsertForm = styled.form`
-  background: #f8f9fa;
-  padding-left: 32px;
-  padding-top: 32px;
-  padding-right: 32px;
-  padding-bottom: 72px;
-
-  border-bottom-left-radius: 16px;
-  border-bottom-right-radius: 16px;
-  border-top: 1px solid #e9ecef;
-`;
-
-export const Input = styled.input`
-  padding: 12px;
-  border-radius: 4px;
-  border: 1px solid #dee2e6;
-  width: 100%;
-  outline: none;
-  font-size: 18px;
-  box-sizing: border-box;
 `;
